@@ -5,7 +5,7 @@ WriteMakefile(
     'VERSION_FROM'  => 'Exception.pm', 
     'PREREQ_PM'     => {
         Test::Builder 			=> '0.13',
-        Test::Builder::Tester	=> '0.08',
+        Test::Builder::Tester	=> '1.01',
         Test::More				=> '0.44',
         Test::Harness			=> '2.03',
         Sub::Uplevel			=> '0.06',
