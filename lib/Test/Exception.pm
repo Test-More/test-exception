@@ -9,7 +9,7 @@ use base qw(Exporter);
 
 use vars qw($VERSION @EXPORT @EXPORT_OK);
 
-$VERSION = '0.20';
+$VERSION = '0.21';
 @EXPORT = qw(dies_ok lives_ok throws_ok lives_and);
 
 my $Tester = Test::Builder->new;
@@ -324,7 +324,7 @@ Overview of some of the many testing modules available on CPAN.
 
 =head1 LICENCE
 
-Copyright 2002-2004 Adrian Howard, All Rights Reserved.
+Copyright 2002-2005 Adrian Howard, All Rights Reserved.
 
 This program is free software; you can redistribute it and/or modify it under the same terms as Perl itself.
 
