@@ -9,7 +9,7 @@ use base qw(Exporter);
 
 use vars qw($VERSION @EXPORT @EXPORT_OK);
 
-$VERSION = '0.21';
+$VERSION = '0.22';
 @EXPORT = qw(dies_ok lives_ok throws_ok lives_and);
 
 my $Tester = Test::Builder->new;
@@ -325,7 +325,7 @@ You can see my current to do list at L<http://adrianh.tadalist.com/lists/public/
 
 Thanks to chromatic and Michael G Schwern for the excellent Test::Builder, without which this module wouldn't be possible.
 
-Thanks to Michael G Schwern, Mark Fowler, Janek Schleicher, chromatic, Peter Scott, Aristotle, Andy Lester, David Wheeler, Jos I. Boumans, Jim Keenan & Perrin for comments, suggestions, bug reports and patches.
+Thanks to Michael G Schwern, Mark Fowler, Janek Schleicher, chromatic, Peter Scott, Aristotle, Andy Lester, David Wheeler, Jos I. Boumans, Jim Keenan, Perrin & Steve for comments, suggestions, bug reports and patches.
 
 
 =head1 AUTHOR

@@ -3,11 +3,24 @@
 # Make sure caller() is undisturbed.
 
 use strict;
-use Test::More tests => 3;
+use Test::More 'no_plan';
 
 BEGIN {use_ok('Test::Exception')};
 
-eval { die caller() . "\n" };
-is( $@, "main\n" );
+sub die_with_package {
+    die scalar caller();
+};
 
-throws_ok { die caller() . "\n" }  qr/^main$/;
+eval { die_with_package() };
+like( $@, qr/^main/, 'call without T::E returns package main' );
+throws_ok { die_with_package() }  qr/^main/, 'die with T::E returns package main';
+
+
+sub die_with_caller {
+	my $subroutine = (caller(1))[3];
+	die $subroutine;
+}
+
+eval { die_with_caller() };
+like( $@, qr/eval/, 'call without T::E returns package main' );
+throws_ok { die_with_caller() } qr/eval/, 'expected eval';
