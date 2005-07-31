@@ -301,17 +301,25 @@ If you find any please let me know by e-mail, or report the problem with L<http:
 
 =head1 COMMUNITY
 
-=head2 perl-qa
+=over 4
+
+=item perl-qa
 
 If you are interested in testing using Perl I recommend you visit L<http://qa.perl.org/> and join the excellent perl-qa mailing list. See L<http://lists.perl.org/showlist.cgi?name=perl-qa> for details on how to subscribe.
 
-=head2 perlmonks
+=item perlmonks
 
 You can find users of Test::Exception, including the module author, on  L<http://www.perlmonks.org/>. Feel free to ask questions on Test::Exception there.
 
-=head2 CPAN::Forum
+=item CPAN::Forum
 
 The CPAN Forum is a web forum for discussing Perl's CPAN modules.   The Test::Exception forum can be found at L<http://www.cpanforum.com/dist/Test-Exception>.
+
+=item AnnoCPAN
+
+AnnoCPAN is a web site that allows community annotations of Perl module documentation. The Test::Exception annotations can be found at L<http://annocpan.org/~ADIE/Test-Exception/>.
+
+=back
 
 
 =head1 TO DO
