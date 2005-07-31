@@ -223,12 +223,14 @@ A description of the exception being checked is used if no optional test descrip
 sub throws_ok (&$;$) {
     my ($coderef, $expecting, $description) = @_;
     croak "throws_ok: must pass exception class/object or regex" 
-    	unless defined $expecting;
+        unless defined $expecting;
     $description ||= _exception_as_string("threw", $expecting);
     my $exception = _try_as_caller($coderef);
     my $regex = $Tester->maybe_regex($expecting);
     my $ok = $regex ? ($exception =~ m/$regex/) 
-		: eval { $exception->isa( ref( $expecting ) || $expecting ) };
+        : eval { $exception->isa( 
+            ref( $expecting ) ? ref( $expecting) : $expecting ) 
+        };
     $Tester->ok($ok, $description);
     unless ($ok) {
         $Tester->diag( _exception_as_string("expecting:", $expecting) );
