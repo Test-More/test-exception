@@ -226,7 +226,7 @@ sub throws_ok (&$;$) {
     my $exception = _try_as_caller($coderef);
     my $regex = $Tester->maybe_regex($expecting);
     my $ok = $regex ? ($exception =~ m/$regex/) 
-            : UNIVERSAL::isa($exception, ref($expecting) || $expecting);
+		: eval { $exception->isa( ref( $expecting ) || $expecting ) };
     $Tester->ok($ok, $description);
     unless ($ok) {
         $Tester->diag( _exception_as_string("expecting:", $expecting) );

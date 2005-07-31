@@ -3,6 +3,7 @@ Revision history for Perl extension Test::Exception:
 0.22
     -   We now test that the import works (it does :-)
     -	Test coverage now at 100% (statement, subroutine & POD)
+    -	Now works with exception classes that override isa
     
 0.21
     -   Most of build_requires should have been in requires, which was causing
