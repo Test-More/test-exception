@@ -224,7 +224,8 @@ sub throws_ok (&$;$) {
     my ($coderef, $expecting, $description) = @_;
     croak "throws_ok: must pass exception class/object or regex" 
         unless defined $expecting;
-    $description ||= _exception_as_string("threw", $expecting);
+    $description = _exception_as_string("threw", $expecting)
+    	unless defined $description;
     my $exception = _try_as_caller($coderef);
     my $regex = $Tester->maybe_regex($expecting);
     my $ok = $regex ? ($exception =~ m/$regex/) 

@@ -2,7 +2,7 @@
 
 use strict;
 
-use Test::Builder::Tester tests => 19;
+use Test::Builder::Tester tests => 20;
 use Test::More;
 
 BEGIN { use_ok( 'Test::Exception' ) };
@@ -152,3 +152,7 @@ test_diag("expecting: Local::Error::Test");
 test_diag("found: Local::Error::NoFallback (no fallback)");
 throws_ok { error("nofallback") } "Local::Error::Test";
 test_test("throws_ok: throws_ok overload without fallback");
+
+test_out("ok 1 - ");
+throws_ok { normal_die() } '/normal/', '';
+test_test("throws_ok: can pass empty test description");
