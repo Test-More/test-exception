@@ -86,7 +86,6 @@ sub _try_as_caller {
 
 sub _is_exception {
     my $exception = shift;
-	return unless defined $exception;
     ref($exception) || $exception ne '';
 };
 
@@ -270,7 +269,7 @@ The test description is optional, but recommended.
 
 =cut
 
-sub lives_and (&$) {
+sub lives_and (&;$) {
     my ($test, $description) = @_;
     {
         local $Test::Builder::Level = $Test::Builder::Level+1;

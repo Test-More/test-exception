@@ -22,4 +22,7 @@ test_fail(+2);
 test_err('# died: oops at t/lives_and.t line 10.');
 lives_and {is dies(42), 42}		'lives_and, exception';
 
+test_out('ok 3 - The object isa Foo' );
+lives_and { isa_ok( bless({}, 'Foo'), 'Foo') };
+
 test_test('lives_and works');

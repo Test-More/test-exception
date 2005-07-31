@@ -9,6 +9,7 @@ Revision history for Perl extension Test::Exception:
     	proper Test::Builder::Tester tests - thanks
 	-	Tidied up some tests a little
 	-	Now cannot pass undef to throws_ok
+	-	The optional test description for lives_and now really is optional
     
 0.21
     -   Most of build_requires should have been in requires, which was causing
