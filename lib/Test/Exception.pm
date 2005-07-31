@@ -165,8 +165,8 @@ The test description is optional, but recommended.
 sub lives_ok (&;$) {
     my ($coderef, $description) = @_;
     my $exception = _try_as_caller($coderef);
-    my $ok = $Tester->ok(! _is_exception($exception), $description)
-        || $Tester->diag(_exception_as_string("died:", $exception));
+    my $ok = $Tester->ok(! _is_exception($exception), $description);
+	$Tester->diag(_exception_as_string("died:", $exception)) unless $ok;
     $@ = $exception;
     return($ok);
 }

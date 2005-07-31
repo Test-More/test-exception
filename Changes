@@ -2,15 +2,16 @@ Revision history for Perl extension Test::Exception:
 
 0.22
     -   We now test that the import works (it does :-)
-    -	Test coverage now at 100% (statement, branch, subroutine & POD)
-    -	Now works with exception classes that override isa
-    -	Added link to AnnoCPAN
-    -	Applied patch from Ben Prew to turn the misused TODO tests into
-    	proper Test::Builder::Tester tests - thanks
-	-	Tidied up some tests a little
-	-	Now cannot pass undef to throws_ok
-	-	The optional test description for lives_and now really is optional
-	-	Can now have empty test description for throws_ok
+    -   Now works with exception classes that override isa
+    -   Added link to AnnoCPAN
+    -   Applied patch from Ben Prew to turn the misused TODO tests into
+        proper Test::Builder::Tester tests - thanks
+    -   Tidied up some tests a little
+    -   Now cannot pass undef as the exception to throws_ok
+    -   The optional test description for lives_and now really is optional
+    -   Can now have empty test description for throws_ok
+    -   Test coverage now at 100% (statement, branch, condition, subroutine
+        & POD)
     
 0.21
     -   Most of build_requires should have been in requires, which was causing
