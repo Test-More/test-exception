@@ -1,10 +1,9 @@
 Revision history for Perl extension Test::Exception:
 
 0.22
-    -   caller() now correctly ignores Test::Exception functions so things that 
-        poke at the stack return accurate results (thanks to Steve for
-        reporting)
-
+    -   We now test that the import works (it does :-)
+    -	Test coverage now at 100% (statement, subroutine & POD)
+    
 0.21
     -   Most of build_requires should have been in requires, which was causing
         CPANPLUS to choke on installs. Fixed (thanks Jos I. Boumans)
