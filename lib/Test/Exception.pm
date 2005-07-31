@@ -6,6 +6,7 @@ use strict;
 use Test::Builder;
 use Sub::Uplevel;
 use base qw(Exporter);
+use Carp;
 
 use vars qw($VERSION @EXPORT @EXPORT_OK);
 
@@ -85,13 +86,13 @@ sub _try_as_caller {
 
 sub _is_exception {
     my $exception = shift;
+	return unless defined $exception;
     ref($exception) || $exception ne '';
 };
 
 
 sub _exception_as_string {
     my ($prefix, $exception) = @_;
-    return "$prefix undef" unless defined($exception);
     return "$prefix normal exit" unless _is_exception($exception);
     my $class = ref($exception);
     $exception = "$class ($exception)" 
@@ -222,6 +223,8 @@ A description of the exception being checked is used if no optional test descrip
 
 sub throws_ok (&$;$) {
     my ($coderef, $expecting, $description) = @_;
+    croak "throws_ok: must pass exception class/object or regex" 
+    	unless defined $expecting;
     $description ||= _exception_as_string("threw", $expecting);
     my $exception = _try_as_caller($coderef);
     my $regex = $Tester->maybe_regex($expecting);
@@ -333,7 +336,7 @@ You can see my current to do list at L<http://adrianh.tadalist.com/lists/public/
 
 Thanks to chromatic and Michael G Schwern for the excellent Test::Builder, without which this module wouldn't be possible.
 
-Thanks to Michael G Schwern, Mark Fowler, Janek Schleicher, chromatic, Peter Scott, Aristotle, Andy Lester, David Wheeler, Jos I. Boumans, Jim Keenan, Perrin & Steve for comments, suggestions, bug reports and patches.
+Thanks to Michael G Schwern, Mark Fowler, Janek Schleicher, chromatic, Peter Scott, Aristotle, Andy Lester, David Wheeler, Jos I. Boumans, Jim Keenan, Perrin, Steve and Ben Prew for comments, suggestions, bug reports and patches.
 
 
 =head1 AUTHOR

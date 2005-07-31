@@ -3,7 +3,8 @@
 use strict;
 use Test::Builder;
 use Test::Harness;
-use Test::More tests => 13;
+use Test::Builder::Tester tests => 13;
+use Test::More;
 
 BEGIN { use_ok( 'Test::Exception' ) };
 
@@ -12,41 +13,47 @@ sub div {
    return( $a / $b );
 };
 
-my $ok;
+{
+    my $ok = dies_ok { div(1, 0) } 'dies_ok passed on die';
+    ok($ok, 'dies_ok returned true when block dies');
+}
 
-$ok = 0;
-$ok = dies_ok { div(1, 0) } 'dies_ok succeeded';
-ok($ok, 'dies_ok returned true on success');
+{
+    test_out('not ok 1 - dies_ok failed');
+    test_fail(+1);
+    my $ok = dies_ok { div(1, 1) } 'dies_ok failed';
+    test_test('dies_ok fails when code does not die');
 
-TODO: {
-	$ok = 1;
-	local $TODO = "testing dies_ok failure";
-	$ok = dies_ok { div(1, 1) } 'dies_ok failed';
-};
-ok(!$ok, 'dies_ok returned false on failure');
+    ok(!$ok, 'dies_ok returned false on failure');
+}
 
+{
+    my $ok = throws_ok { div(1, 0) } '/./', 'throws_ok succeeded';
+    ok($ok, 'throws_ok returned true on success');
+}
 
-$ok = 0;
-$ok = throws_ok { div(1, 0) } '/./', 'throws_ok succeeded';
-ok($ok, 'throws_ok returned true on success');
+{
+    test_out('not ok 1 - throws_ok failed');
+    test_fail(+3);
+    test_err('# expecting: /./');
+    test_err('# found: normal exit');
+    my $ok = throws_ok { div(1, 1) } '/./', 'throws_ok failed';
+    test_test('throws_ok fails when appropriate');
 
-TODO: {
-	$ok = 1;
-	local $TODO = "testing throws_ok failure";
-	$ok = throws_ok { div(1, 1) } '/./', 'throws_ok failed';
-};
-ok(!$ok, 'throws_ok returned false on failure');
+    ok(!$ok, 'throws_ok returned false on failure');
+}
 
+{
+    my $ok = lives_ok { div(1, 1) } 'lives_ok succeeded';
+    ok($ok, 'lives_ok returned true on success');
+}
 
-$ok = 0;
-$ok = lives_ok { div(1, 1) } 'lives_ok succeeded';
-ok($ok, 'lives_ok returned true on success');
+{
+    test_out('not ok 1 - lives_ok failed');
+    test_fail(+2);
+    test_err('# died: Illegal division by zero at t/return.t line 13.');
+    my $ok = lives_ok { div(1, 0) } 'lives_ok failed';
+    test_test("dies_ok fails"); 
 
-TODO: {
-	$ok = 1;
-	local $TODO = "testing lives_ok failure";
-	$ok = lives_ok { div(1, 0) } 'lives_ok failed';
-};
-ok(!$ok, 'lives_ok returned false on failure');
-
-
+    ok(!$ok, 'lives_ok returned false on failure');
+}

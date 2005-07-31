@@ -1,7 +1,8 @@
 #! /usr/bin/perl
 
 use strict;
-use Test::More tests => 4;
+use Test::Builder::Tester tests => 3;
+use Test::More;
 
 BEGIN { use_ok( 'Test::Exception' ) };
 
@@ -10,8 +11,15 @@ sub dies { die 'oops' };
 
 lives_and {is works(42), 42} 'lives_and, no_exception & success';
 
-TODO: {
-	local $TODO = 'we expect this test to fail';
-	lives_and {is works(42), 24}	'lives_and, no_exception & failure';
-	lives_and {is dies(42), 42}		'lives_and, exception';
-};
+test_out('not ok 1 - lives_and, no_exception & failure');
+test_fail(+3);
+test_err("#          got: '42'");
+test_err("#     expected: '24'");
+lives_and {is works(42), 24}	'lives_and, no_exception & failure';
+	 
+test_out('not ok 2 - lives_and, exception');
+test_fail(+2);
+test_err('# died: oops at t/lives_and.t line 10.');
+lives_and {is dies(42), 42}		'lives_and, exception';
+
+test_test('lives_and works');
