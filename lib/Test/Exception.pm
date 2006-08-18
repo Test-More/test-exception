@@ -1,11 +1,9 @@
-    #! /usr/bin/perl -w
-
 package Test::Exception;
 use 5.005;
 use strict;
 use Test::Builder;
-use Sub::Uplevel;
-use base qw(Exporter);
+use Sub::Uplevel qw( uplevel );
+use base qw( Exporter );
 use Carp;
 
 use vars qw($VERSION @EXPORT @EXPORT_OK);
@@ -41,29 +39,29 @@ Test::Exception - Test exception based code
   # then...
 
   # Check that something died
-  dies_ok {$foo->method1} 'expecting to die';
+  dies_ok { $foo->method1 } 'expecting to die';
 
   # Check that something did not die
-  lives_ok {$foo->method2} 'expecting to live';
+  lives_ok { $foo->method2 } 'expecting to live';
 
   # Check that the stringified exception matches given regex
-  throws_ok {$foo->method3} qr/division by zero/, 'zero caught okay';
+  throws_ok { $foo->method3 } qr/division by zero/, 'zero caught okay';
 
   # Check an exception of the given class (or subclass) is thrown
-  throws_ok {$foo->method4} 'Error::Simple', 'simple error thrown';
+  throws_ok { $foo->method4 } 'Error::Simple', 'simple error thrown';
 
   # Check that a test runs without an exception
-  lives_and {is $foo->method, 42} 'method is 42';
+  lives_and { is $foo->method, 42 } 'method is 42';
   
   # or if you don't like prototyped functions
   
   dies_ok( sub { $foo->method1 }, 'expecting to die' );
-  lives_ok( sub {$foo->method2}, 'expecting to live' );
-  throws_ok( sub {$foo->method3}, qr/division by zero/,
+  lives_ok( sub { $foo->method2 }, 'expecting to live' );
+  throws_ok( sub { $foo->method3 }, qr/division by zero/,
       'zero caught okay' );
-  throws_ok( sub {$foo->method4}, 'Error::Simple', 
+  throws_ok( sub { $foo->method4 }, 'Error::Simple', 
       'simple error thrown' );
-  lives_and( sub {is $foo->method, 42}, 'method is 42' );
+  lives_and( sub { is $foo->method, 42 }, 'method is 42' );
 
 
 =head1 DESCRIPTION
@@ -108,13 +106,14 @@ sub _exception_as_string {
 Checks that a piece of code dies, rather than returning normally. For example:
 
     sub div {
-        my ($a, $b) = @_;
-        return( $a / $b );
+        my ( $a, $b ) = @_;
+        return $a / $b;
     };
 
-    dies_ok { div(1, 0) } 'divide by zero detected';
+    dies_ok { div( 1, 0 ) } 'divide by zero detected';
+
     # or if you don't like prototypes
-    dies_ok( sub { div(1, 0) }, 'divide by zero detected' );
+    dies_ok( sub { div( 1, 0 ) }, 'divide by zero detected' );
 
 A true value is returned if the test succeeds, false otherwise. On exit $@ is guaranteed to be the cause of death (if any).
 
@@ -138,15 +137,15 @@ Checks that a piece of code exits normally, and doesn't die. For example:
 
     sub read_file {
         my $file = shift;
-        local $/ = undef;
-        open(FILE, $file) or die "open failed ($!)\n";
+        local $/;
+        open my $fh, '<', $file or die "open failed ($!)\n";
         $file = <FILE>;
-        close(FILE);
-        return($file);
+        return $file;
     };
 
     my $file;
     lives_ok { $file = read_file('test.txt') } 'file read';
+
     # or if you don't like prototypes
     lives_ok( sub { $file = read_file('test.txt') }, 'file read' );
 
@@ -181,26 +180,22 @@ Tests to see that a specific exception is thrown. throws_ok() has two forms:
 
 In the first form the test passes if the stringified exception matches the give regular expression. For example:
 
-    throws_ok { 
-        read_file('unreadable') 
-    } qr/No such file/, 'no file';
+    throws_ok { read_file( 'unreadable' ) } qr/No file/, 'no file';
 
 If your perl does not support C<qr//> you can also pass a regex-like string, for example:
 
-    throws_ok { 
-        read_file('unreadable') 
-    } '/Permission denied/', 'no permissions';
+    throws_ok { read_file( 'unreadable' ) } '/No file/', 'no file';
 
 The second form of throws_ok() test passes if the exception is of the same class as the one supplied, or a subclass of that class. For example:
 
-    throws_ok {$foo->bar} "Error::Simple", 'simple error';
+    throws_ok { $foo->bar } "Error::Simple", 'simple error';
 
 Will only pass if the C<bar> method throws an Error::Simple exception, or a subclass of an Error::Simple exception.
 
 You can get the same effect by passing an instance of the exception you want to look for. The following is equivalent to the previous example:
 
-    my $SIMPLE = Error::Simple->new();
-    throws_ok {$foo->bar} $SIMPLE, 'simple error';
+    my $SIMPLE = Error::Simple->new;
+    throws_ok { $foo->bar } $SIMPLE, 'simple error';
 
 Should a throws_ok() test fail it produces appropriate diagnostic messages. For example:
 
