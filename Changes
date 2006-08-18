@@ -8,23 +8,29 @@ Revision history for Perl extension Test::Exception:
         proper Test::Builder::Tester tests - thanks
     -   Tidied up some tests a little
     -   Now cannot pass undef as the exception to throws_ok
-    -   The optional test description for lives_and now really is optional
+    -   The optional test description for lives_and is now optional :)
     -   Can now have empty test description for throws_ok
     -   Requires Sub::Uplevel 0.13 - squashing several bugs (thanks to David 
         Golden for fixing Sub::Uplevel, and reporting the issue - along with 
-        Cees Hek, )
+        Cees Hek)
     -   Test coverage now at 100% (statement, branch, condition, subroutine
         & POD) according to Devel::Cover 0.58
+    -   Uses Test::Pod::Coverage rather than home grown script
+    -   Tidied up the POD a little
+    -   Tweaked the code formatting a little
+    -   Added (optional) Perl::Critic tests
 
 
 TODO
 - example of conditionally including T::E (Rob Muhlestein)
+- figure out the preferred "right" way of skipping developer tests
 - check code style of POD
 - check RT tickets
 - check tada list
 - check CPANTS
 - sync Acknowledgements in POD with Changes
 - check test coverage
+
 
 0.21
     -   Most of build_requires should have been in requires, which was 
