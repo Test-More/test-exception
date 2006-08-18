@@ -80,7 +80,6 @@ You can specify the test plan when you C<use Test::Exception> in the same way as
 sub _try_as_caller {
     my $coderef = shift;
     eval { uplevel 3, $coderef };
-#    uplevel( 4, sub { eval { $coderef->() } } );
     return $@;
 };
 

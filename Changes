@@ -12,6 +12,13 @@ Revision history for Perl extension Test::Exception:
     -   Can now have empty test description for throws_ok
     -   Test coverage now at 100% (statement, branch, condition, subroutine
         & POD)
+    -   Requires Sub::Uplevel 0.13 - squashing several bugs (thanks to David 
+        Golden for fixing Sub::Uplevel, and reporting the issue - along with 
+        Cees Hek, )
+
+TODO
+- sync Acknowledgements in POD with Changes
+- check RT tickets
     
 0.21
     -   Most of build_requires should have been in requires, which was causing
