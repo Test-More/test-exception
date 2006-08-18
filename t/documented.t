@@ -1,4 +1,7 @@
-#! /usr/bin/perl -w
+#! /usr/bin/perl -Tw
+
+use strict;
+use warnings;
 
 use Test::More;
 eval "use Test::Pod::Coverage 1.00";

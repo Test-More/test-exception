@@ -1,6 +1,8 @@
-#! /usr/bin/perl
+#! /usr/bin/perl -Tw
 
 use strict;
+use warnings;
+
 use Test::Builder::Tester tests => 3;
 use Test::More;
 
