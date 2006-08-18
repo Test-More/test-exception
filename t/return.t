@@ -1,7 +1,6 @@
 #! /usr/bin/perl -Tw
 
 use strict;
-use warnings;
 use Test::Builder;
 use Test::Harness;
 use Test::Builder::Tester tests => 13;
@@ -19,14 +18,16 @@ sub div {
     ok($ok, 'dies_ok returned true when block dies');
 }
 
+
 {
     test_out('not ok 1 - dies_ok failed');
-    test_fail(+1);
+    test_fail( +1 );
     my $ok = dies_ok { div(1, 1) } 'dies_ok failed';
     test_test('dies_ok fails when code does not die');
 
     ok(!$ok, 'dies_ok returned false on failure');
 }
+
 
 {
     my $ok = throws_ok { div(1, 0) } '/./', 'throws_ok succeeded';

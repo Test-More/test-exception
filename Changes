@@ -23,13 +23,12 @@ Revision history for Perl extension Test::Exception:
 TODO
 - example of conditionally including T::E (Rob Muhlestein)
 - figure out the preferred "right" way of skipping developer tests
-- check code style of POD
 - check RT tickets
 - check tada list
 - check CPANTS
 - sync Acknowledgements in POD with Changes
-- review POD
 - check test coverage
+- add not to look at use warnings issue with lives_and.t and return.t
 
 
 0.21
