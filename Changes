@@ -1,6 +1,6 @@
 Revision history for Perl extension Test::Exception:
 
-0.22
+0.22 - or the "about f**king time" release
     -   We now test that the import works (it does :-)
     -   Now works with exception classes that override isa
     -   Added link to AnnoCPAN
@@ -10,19 +10,25 @@ Revision history for Perl extension Test::Exception:
     -   Now cannot pass undef as the exception to throws_ok
     -   The optional test description for lives_and now really is optional
     -   Can now have empty test description for throws_ok
-    -   Test coverage now at 100% (statement, branch, condition, subroutine
-        & POD)
     -   Requires Sub::Uplevel 0.13 - squashing several bugs (thanks to David 
         Golden for fixing Sub::Uplevel, and reporting the issue - along with 
         Cees Hek, )
+    -   Test coverage now at 100% (statement, branch, condition, subroutine
+        & POD) according to Devel::Cover 0.58
+
 
 TODO
-- sync Acknowledgements in POD with Changes
+- example of conditionally including T::E (Rob Muhlestein)
+- check code style of POD
 - check RT tickets
-    
+- check tada list
+- check CPANTS
+- sync Acknowledgements in POD with Changes
+- check test coverage
+
 0.21
-    -   Most of build_requires should have been in requires, which was causing
-        CPANPLUS to choke on installs. Fixed (thanks Jos I. Boumans)
+    -   Most of build_requires should have been in requires, which was 
+        causing CPANPLUS to choke on installs. Fixed (thanks Jos I. Boumans)
     -   Test names now called test descriptions to fit in with latest TAP style
     -   Added link to tada list to TO DO section of documentation
     -   Added COMMUNITY section to POD

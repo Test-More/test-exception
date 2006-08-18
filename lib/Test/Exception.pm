@@ -1,4 +1,4 @@
-#! /usr/bin/perl -w
+    #! /usr/bin/perl -w
 
 package Test::Exception;
 use 5.005;
@@ -17,12 +17,12 @@ my $Tester = Test::Builder->new;
 
 sub import {
     my $self = shift;
-    if (@_) {
+    if ( @_ ) {
         my $package = caller;
-        $Tester->exported_to($package);
-        $Tester->plan(@_);
+        $Tester->exported_to( $package );
+        $Tester->plan( @_ );
     };
-    $self->export_to_level(1, $self, $_) foreach @EXPORT;
+    $self->export_to_level( 1, $self, $_ ) foreach @EXPORT;
 }
 
 =head1 NAME
@@ -86,18 +86,18 @@ sub _try_as_caller {
 
 sub _is_exception {
     my $exception = shift;
-    ref($exception) || $exception ne '';
+    return ref $exception || $exception ne '';
 };
 
 
 sub _exception_as_string {
-    my ($prefix, $exception) = @_;
-    return "$prefix normal exit" unless _is_exception($exception);
-    my $class = ref($exception);
+    my ( $prefix, $exception ) = @_;
+    return "$prefix normal exit" unless _is_exception( $exception );
+    my $class = ref $exception;
     $exception = "$class ($exception)" 
             if $class && "$exception" !~ m/^\Q$class/;
-    chomp($exception);
-    return("$prefix $exception");
+    chomp $exception;
+    return "$prefix $exception";
 };
 
 
@@ -124,11 +124,11 @@ The test description is optional, but recommended.
 
 
 sub dies_ok (&;$) {
-    my ($coderef, $description) = @_;
-    my $exception = _try_as_caller($coderef);
+    my ( $coderef, $description ) = @_;
+    my $exception = _try_as_caller( $coderef );
     my $ok = $Tester->ok( _is_exception($exception), $description );
     $@ = $exception;
-    return($ok);
+    return $ok;
 }
 
 
@@ -163,12 +163,12 @@ The test description is optional, but recommended.
 =cut
 
 sub lives_ok (&;$) {
-    my ($coderef, $description) = @_;
-    my $exception = _try_as_caller($coderef);
-    my $ok = $Tester->ok(! _is_exception($exception), $description);
-	$Tester->diag(_exception_as_string("died:", $exception)) unless $ok;
+    my ( $coderef, $description ) = @_;
+    my $exception = _try_as_caller( $coderef );
+    my $ok = $Tester->ok( ! _is_exception( $exception ), $description );
+	$Tester->diag( _exception_as_string( "died:", $exception ) ) unless $ok;
     $@ = $exception;
-    return($ok);
+    return $ok;
 }
 
 
@@ -221,24 +221,25 @@ A description of the exception being checked is used if no optional test descrip
 
 
 sub throws_ok (&$;$) {
-    my ($coderef, $expecting, $description) = @_;
+    my ( $coderef, $expecting, $description ) = @_;
     croak "throws_ok: must pass exception class/object or regex" 
         unless defined $expecting;
-    $description = _exception_as_string("threw", $expecting)
+    $description = _exception_as_string( "threw", $expecting )
     	unless defined $description;
-    my $exception = _try_as_caller($coderef);
-    my $regex = $Tester->maybe_regex($expecting);
-    my $ok = $regex ? ($exception =~ m/$regex/) 
-        : eval { $exception->isa( 
-            ref( $expecting ) ? ref( $expecting) : $expecting ) 
+    my $exception = _try_as_caller( $coderef );
+    my $regex = $Tester->maybe_regex( $expecting );
+    my $ok = $regex 
+        ? ( $exception =~ m/$regex/ ) 
+        : eval { 
+            $exception->isa( ref $expecting ? ref $expecting : $expecting ) 
         };
-    $Tester->ok($ok, $description);
-    unless ($ok) {
-        $Tester->diag( _exception_as_string("expecting:", $expecting) );
-        $Tester->diag( _exception_as_string("found:", $exception) );
+    $Tester->ok( $ok, $description );
+    unless ( $ok ) {
+        $Tester->diag( _exception_as_string( "expecting:", $expecting ) );
+        $Tester->diag( _exception_as_string( "found:", $exception ) );
     };
     $@ = $exception;
-    return($ok);
+    return $ok;
 };
 
 
@@ -273,9 +274,9 @@ The test description is optional, but recommended.
 =cut
 
 sub lives_and (&;$) {
-    my ($test, $description) = @_;
+    my ( $test, $description ) = @_;
     {
-        local $Test::Builder::Level = $Test::Builder::Level+1;
+        local $Test::Builder::Level = $Test::Builder::Level + 1;
         my $ok = \&Test::Builder::ok;
         no warnings;
         local *Test::Builder::ok = sub {
@@ -286,9 +287,9 @@ sub lives_and (&;$) {
         eval { $test->() } and return 1;
     };
     my $exception = $@;
-    if (_is_exception($exception)) {
-        $Tester->ok(0, $description);
-        $Tester->diag( _exception_as_string("died:", $exception) );
+    if ( _is_exception( $exception ) ) {
+        $Tester->ok( 0, $description );
+        $Tester->diag( _exception_as_string( "died:", $exception ) );
     };
     $@ = $exception;
     return;
@@ -338,7 +339,7 @@ You can see my current to do list at L<http://adrianh.tadalist.com/lists/public/
 
 Thanks to chromatic and Michael G Schwern for the excellent Test::Builder, without which this module wouldn't be possible.
 
-Thanks to Michael G Schwern, Mark Fowler, Janek Schleicher, chromatic, Peter Scott, Aristotle, Andy Lester, David Wheeler, Jos I. Boumans, Jim Keenan, Perrin, Steve and Ben Prew for comments, suggestions, bug reports and patches.
+Thanks to Michael G Schwern, Mark Fowler, Janek Schleicher, chromatic, Peter Scott, Aristotle, Andy Lester, David Wheeler, Jos I. Boumans, Jim Keenan, Perrin, Steve, Ben Prew, David Golden, Cees Hek and Rob Muhlestein for comments, suggestions, bug reports and patches.
 
 
 =head1 AUTHOR
