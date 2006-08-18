@@ -1,15 +1,14 @@
-package Test::Exception;
-use 5.005;
 use strict;
+use warnings;
+
+package Test::Exception;
 use Test::Builder;
 use Sub::Uplevel qw( uplevel );
 use base qw( Exporter );
 use Carp;
 
-use vars qw($VERSION @EXPORT @EXPORT_OK);
-
-$VERSION = '0.22';
-@EXPORT = qw(dies_ok lives_ok throws_ok lives_and);
+our $VERSION = '0.22';
+our @EXPORT = qw(dies_ok lives_ok throws_ok lives_and);
 
 my $Tester = Test::Builder->new;
 
