@@ -1,6 +1,7 @@
 #! /usr/bin/perl -Tw
 
 use strict;
+use warnings;
 use Test::Builder;
 use Test::Harness;
 use Test::Builder::Tester tests => 13;
@@ -53,7 +54,7 @@ sub div {
 {
     test_out('not ok 1 - lives_ok failed');
     test_fail(+2);
-    test_err('# died: Illegal division by zero at t/return.t line 13.');
+    test_err('# died: Illegal division by zero at t/return.t line 14.');
     my $ok = lives_ok { div(1, 0) } 'lives_ok failed';
     test_test("dies_ok fails"); 
 

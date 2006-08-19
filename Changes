@@ -19,6 +19,7 @@ Revision history for Perl extension Test::Exception:
     -   Tidied up the POD a little
     -   Tweaked the code formatting a little
     -   Added (optional) Perl::Critic tests
+    -   Updated Test::Builder dependency to 0.33
 
 TODO
 - example of conditionally including T::E (Rob Muhlestein)

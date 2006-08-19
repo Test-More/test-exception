@@ -1,6 +1,7 @@
 #! /usr/bin/perl -Tw
 
 use strict;
+use warnings;
 use Test::Builder::Tester tests => 3;
 use Test::More;
 
@@ -19,7 +20,7 @@ lives_and {is works(42), 24}	'lives_and, no_exception & failure';
 	 
 test_out('not ok 2 - lives_and, exception');
 test_fail(+2);
-test_err('# died: oops at t/lives_and.t line 10.');
+test_err('# died: oops at t/lives_and.t line 11.');
 lives_and {is dies(42), 42}		'lives_and, exception';
 
 test_out('ok 3 - The object isa Foo' );
