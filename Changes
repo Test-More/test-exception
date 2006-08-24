@@ -16,14 +16,14 @@ Revision history for Perl extension Test::Exception:
     -   Added (optional) Perl::Critic tests
     -   Updated Test::Builder::Tester dependency to 1.04
     -   Tidied up tests, code and POD a little
+    -   All developer tests live in t/developer and do not run by default
     -   Added example of only using Test::Exception if it's installed (thanks
         to Rob Muhlestein for suggesting this)
     -   Test coverage now at 100% (statement, branch, condition, subroutine
         & POD) according to Devel::Cover 0.58
 
 TODO
-- figure out the preferred "right" way of skipping developer tests
-- Add RT ticket people to ackknowledgements
+- Add RT ticket people to acknowledgements
 - sync Acknowledgements in POD with Changes
 - check test coverage
 - check CPAN::Forum
