@@ -14,7 +14,7 @@ Revision history for Perl extension Test::Exception:
         with Cees Hek)
     -   Uses Test::Pod::Coverage rather than home grown script
     -   Added (optional) Perl::Critic tests
-    -   Updated Test::Builder dependency to 0.33
+    -   Updated Test::Builder::Tester dependency to 1.04
     -   Tidied up tests, code and POD a little
     -   Added example of only using Test::Exception if it's installed (thanks
         to Rob Muhlestein for suggesting this)
@@ -23,10 +23,10 @@ Revision history for Perl extension Test::Exception:
 
 TODO
 - figure out the preferred "right" way of skipping developer tests
-- check RT tickets
+- Add RT ticket people to ackknowledgements
 - sync Acknowledgements in POD with Changes
 - check test coverage
-- add not to look at use warnings issue with lives_and.t and return.t
+- check CPAN::Forum
 
 
 0.21
