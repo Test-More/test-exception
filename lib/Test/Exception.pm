@@ -292,6 +292,25 @@ sub lives_and (&;$) {
 =back
 
 
+=head1 SKIPPING TEST::EXCEPTION TESTS
+
+Sometimes we want to use Test::Exception tests in a test suite, but don't want to force the user to have Test::Exception installed. One way to do this is to skip the tests if Test::Exception is absent. You can do this with code something like this:
+
+  use strict;
+  use warnings;
+  use Test::More;
+  
+  BEGIN {
+      eval "use Test::Exception";
+      plan skip_all => "Test::Exception needed" if $@;
+  }
+  
+  plan tests => 2;
+  # ... tests that need Test::Exception ...
+
+Note that we load Test::Exception in a C<BEGIN> block ensuring that the subroutine prototypes are in place before the rest of the test script is compiled.
+
+
 =head1 BUGS
 
 None known at the time of writing. 
@@ -363,12 +382,20 @@ Modules to help test warnings.
 
 Overview of some of the many testing modules available on CPAN.
 
+=item L<http://del.icio.us/tag/Test::Exception>
+
+Delicious links on Test::Exception.
+
+=item L<http://del.icio.us/tag/perl+testing>
+
+Delicious links on perl testing.
+
 =back
 
 
 =head1 LICENCE
 
-Copyright 2002-2005 Adrian Howard, All Rights Reserved.
+Copyright 2002-2006 Adrian Howard, All Rights Reserved.
 
 This program is free software; you can redistribute it and/or modify it under the same terms as Perl itself.
 

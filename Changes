@@ -5,28 +5,25 @@ Revision history for Perl extension Test::Exception:
     -   Now works with exception classes that override isa
     -   Added link to AnnoCPAN
     -   Applied patch from Ben Prew to turn the misused TODO tests into
-        proper Test::Builder::Tester tests - thanks
-    -   Tidied up some tests a little
+        proper Test::Builder::Tester tests - thanks Ben
     -   Now cannot pass undef as the exception to throws_ok
     -   The optional test description for lives_and is now optional :)
     -   Can now have empty test description for throws_ok
     -   Requires Sub::Uplevel 0.13 - squashing several bugs (thanks to David 
         Golden for fixing Sub::Uplevel, and for reporting the issue - along 
         with Cees Hek)
-    -   Test coverage now at 100% (statement, branch, condition, subroutine
-        & POD) according to Devel::Cover 0.58
     -   Uses Test::Pod::Coverage rather than home grown script
-    -   Tidied up the POD a little
-    -   Tweaked the code formatting a little
     -   Added (optional) Perl::Critic tests
     -   Updated Test::Builder dependency to 0.33
+    -   Tidied up tests, code and POD a little
+    -   Added example of only using Test::Exception if it's installed (thanks
+        to Rob Muhlestein for suggesting this)
+    -   Test coverage now at 100% (statement, branch, condition, subroutine
+        & POD) according to Devel::Cover 0.58
 
 TODO
-- example of conditionally including T::E (Rob Muhlestein)
 - figure out the preferred "right" way of skipping developer tests
 - check RT tickets
-- check tada list
-- check CPANTS
 - sync Acknowledgements in POD with Changes
 - check test coverage
 - add not to look at use warnings issue with lives_and.t and return.t
