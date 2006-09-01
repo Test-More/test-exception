@@ -352,7 +352,28 @@ You can see my current to do list at L<http://adrianh.tadalist.com/lists/public/
 
 Thanks to chromatic and Michael G Schwern for the excellent Test::Builder, without which this module wouldn't be possible.
 
-Thanks to Michael G Schwern, Mark Fowler, Janek Schleicher, chromatic, Peter Scott, Aristotle, Andy Lester, David Wheeler, Jos I. Boumans, Jim Keenan, Perrin, Steve, Ben Prew, David Golden, Cees Hek and Rob Muhlestein for comments, suggestions, bug reports and patches.
+Thanks to 
+Adam Kennedy,
+Andy Lester, 
+Aristotle, 
+Ben Prew, 
+Cees Hek,
+chromatic, 
+David Golden, 
+David Wheeler, 
+Janek Schleicher, 
+Jim Keenan, 
+Jos I. Boumans, 
+Mark Fowler, 
+Michael G Schwern, 
+Paul,
+Perrin, 
+Peter Scott, 
+Rob Muhlestein 
+Steve Purkis,
+Steve, 
+Tim Bunce,
+and various anonymous folk for comments, suggestions, bug reports and patches.
 
 
 =head1 AUTHOR
