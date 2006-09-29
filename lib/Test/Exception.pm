@@ -7,7 +7,7 @@ use Sub::Uplevel qw( uplevel );
 use base qw( Exporter );
 use Carp;
 
-our $VERSION = '0.22';
+our $VERSION = '0.23';
 our @EXPORT = qw(dies_ok lives_ok throws_ok lives_and);
 
 my $Tester = Test::Builder->new;
@@ -359,17 +359,21 @@ Aristotle,
 Ben Prew, 
 Cees Hek,
 chromatic, 
+Curt Sampson,
 David Golden, 
 David Wheeler, 
+Janek Schleicher,
 Janek Schleicher, 
 Jim Keenan, 
 Jos I. Boumans, 
+Jost Krieger,
 Mark Fowler, 
 Michael G Schwern, 
 Paul McCann,
-Perrin, 
+Perrin Harkins, 
 Peter Scott, 
 Rob Muhlestein 
+Scott R. Godin,
 Steve Purkis,
 Steve, 
 Tim Bunce,

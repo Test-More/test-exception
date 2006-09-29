@@ -1,5 +1,8 @@
 Revision history for Perl extension Test::Exception:
 
+0.23
+    -   Added a bunch of missed acknowledgements
+
 0.22 - or the "about bloody time" release
     -   We now test that the import works (it does :-)
     -   Now works with exception classes that override isa
