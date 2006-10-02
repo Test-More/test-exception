@@ -2,6 +2,8 @@ Revision history for Perl extension Test::Exception:
 
 0.23
     -   Added a bunch of missed acknowledgements
+    -   Made the fact that $@ is preserved by T::E subroutines explicit in
+        the synopsis
 
 0.22 - or the "about bloody time" release
     -   We now test that the import works (it does :-)
