@@ -207,7 +207,7 @@ Should a throws_ok() test fail it produces appropriate diagnostic messages. For 
     # expecting: Error::Simple exception
     # found: normal exit
 
-Like all other Test::Exception functions you can avoid protypes by passing a subroutine explicitly:
+Like all other Test::Exception functions you can avoid prototypes by passing a subroutine explicitly:
 
     throws_ok( sub {$foo->bar}, "Error::Simple", 'simple error' );
 
@@ -352,7 +352,7 @@ If you think this module should do something that it doesn't (or does something 
 You can see my current to do list at L<http://adrianh.tadalist.com/lists/public/15421>, with an RSS feed of changes at L<http://adrianh.tadalist.com/lists/feed_public/15421>.
 
 
-=head1 ACKNOWLEGEMENTS
+=head1 ACKNOWLEDGMENTS
 
 Thanks to chromatic and Michael G Schwern for the excellent Test::Builder, without which this module wouldn't be possible.
 
@@ -367,7 +367,6 @@ Curt Sampson,
 David Golden, 
 David Wheeler, 
 Janek Schleicher,
-Janek Schleicher, 
 Jim Keenan, 
 Jos I. Boumans, 
 Jost Krieger,
