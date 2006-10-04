@@ -1,5 +1,9 @@
 Revision history for Perl extension Test::Exception:
 
+0.24
+    -   Fixed a bunch of spelling mistakes in the POD
+    -   Added an (optional) spelling test in t/developer
+
 0.23
     -   Added a bunch of missed acknowledgements
     -   Made the fact that $@ is preserved by T::E subroutines explicit in
