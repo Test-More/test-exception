@@ -7,7 +7,7 @@ use Sub::Uplevel qw( uplevel );
 use base qw( Exporter );
 use Carp;
 
-our $VERSION = '0.24';
+our $VERSION = '0.25';
 our @EXPORT = qw(dies_ok lives_ok throws_ok lives_and);
 
 my $Tester = Test::Builder->new;
@@ -364,6 +364,7 @@ Ben Prew,
 Cees Hek,
 chromatic, 
 Curt Sampson,
+David Cantrell,
 David Golden, 
 David Wheeler, 
 Janek Schleicher,
@@ -423,7 +424,7 @@ Delicious links on perl testing.
 
 =head1 LICENCE
 
-Copyright 2002-2006 Adrian Howard, All Rights Reserved.
+Copyright 2002-2007 Adrian Howard, All Rights Reserved.
 
 This program is free software; you can redistribute it and/or modify it under the same terms as Perl itself.
 
