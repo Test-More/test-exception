@@ -7,7 +7,7 @@ use Sub::Uplevel qw( uplevel );
 use base qw( Exporter );
 use Carp;
 
-our $VERSION = '0.25';
+our $VERSION = '0.26';
 our @EXPORT = qw(dies_ok lives_ok throws_ok lives_and);
 
 my $Tester = Test::Builder->new;
