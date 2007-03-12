@@ -1,6 +1,10 @@
 Revision history for Perl extension Test::Exception:
 
 0.26
+    -   Added some more exposition on the usage of dies_ok() and lives_ok() for 
+        those who found them confusing.
+    -   Some minor documentation tweaks.
+    -   (thanks to Joshua ben Jore & David Golden)
 
 0.25
     -   Updated Test::Simple dependency to make sure it is in sync with

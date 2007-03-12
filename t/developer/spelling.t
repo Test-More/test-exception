@@ -38,3 +38,8 @@ qa
 Adrian
 Cantrell
 Janek
+Jore
+ben
+Khemir
+Nadim
+Pagaltzis
