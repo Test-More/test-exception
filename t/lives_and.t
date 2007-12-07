@@ -20,7 +20,7 @@ lives_and {is works(42), 24}	'lives_and, no_exception & failure';
 	 
 test_out('not ok 2 - lives_and, exception');
 test_fail(+2);
-test_err('# died: oops at $0 line 11.');
+test_err("# died: oops at $0 line 11.");
 lives_and {is dies(42), 42}		'lives_and, exception';
 
 test_out('ok 3 - The object isa Foo' );
