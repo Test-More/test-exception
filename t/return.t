@@ -54,7 +54,7 @@ sub div {
 {
     test_out('not ok 1 - lives_ok failed');
     test_fail(+2);
-    test_err('# died: Illegal division by zero at $0 line 14.');
+    test_err("# died: Illegal division by zero at $0 line 14.");
     my $ok = lives_ok { div(1, 0) } 'lives_ok failed';
     test_test("dies_ok fails"); 
 
