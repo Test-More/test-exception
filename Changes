@@ -2,9 +2,15 @@ Revision history for Perl extension Test::Exception:
 
 0.26
     -   Added some more exposition on the usage of dies_ok() and lives_ok() for 
-        those who found them confusing.
-    -   Some minor documentation tweaks.
-    -   (thanks to Joshua ben Jore & David Golden)
+        those who found them confusing. Also reordered presentation of docs so
+        more specific throws_ok() comes first.
+    -   Some misc. documentation tweaks.
+    -   Added some tests for RT#24678, but not actually fixed them yet
+        (thanks to Joshua ben Jore & David Golden). They skip for now.
+    -   Tests should now pass on Strawberry/Vanilla Perl (thanks Nadim Khemir
+        & Chris Dolan)
+    -   Added comment in docs about T::E not catching exit() in eval() blocks 
+        (thanks Peter Scott)
 
 0.25
     -   Updated Test::Simple dependency to make sure it is in sync with
