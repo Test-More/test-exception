@@ -38,42 +38,48 @@ Test::Exception - Test exception based code
   # then...
 
   # Check that the stringified exception matches given regex
-  throws_ok { $foo->method3 } qr/division by zero/, 'zero caught okay';
+  throws_ok { $foo->method } qr/division by zero/, 'zero caught okay';
 
   # Check an exception of the given class (or subclass) is thrown
-  throws_ok { $foo->method4 } 'Error::Simple', 'simple error thrown';
+  throws_ok { $foo->method } 'Error::Simple', 'simple error thrown';
   
   # all Test::Exceptions subroutines are guaranteed to preserve the state 
   # of $@ so you can do things like this after throws_ok and dies_ok
   like $@, 'what the stringified exception should look like';
 
   # Check that something died - we do not care why
-  dies_ok { $foo->method1 } 'expecting to die';
+  dies_ok { $foo->method } 'expecting to die';
 
   # Check that something did not die
-  lives_ok { $foo->method2 } 'expecting to live';
+  lives_ok { $foo->method } 'expecting to live';
 
   # Check that a test runs without an exception
   lives_and { is $foo->method, 42 } 'method is 42';
   
   # or if you don't like prototyped functions
   
-  throws_ok( sub { $foo->method3 }, qr/division by zero/,
+  throws_ok( sub { $foo->method }, qr/division by zero/,
       'zero caught okay' );
-  throws_ok( sub { $foo->method4 }, 'Error::Simple', 
+  throws_ok( sub { $foo->method }, 'Error::Simple', 
       'simple error thrown' );
-  dies_ok( sub { $foo->method1 }, 'expecting to die' );
-  lives_ok( sub { $foo->method2 }, 'expecting to live' );
+  dies_ok( sub { $foo->method }, 'expecting to die' );
+  lives_ok( sub { $foo->method }, 'expecting to live' );
   lives_and( sub { is $foo->method, 42 }, 'method is 42' );
 
 
 =head1 DESCRIPTION
 
-This module provides a few convenience methods for testing exception based code. It is built with L<Test::Builder> and plays happily with L<Test::More> and friends.
+This module provides a few convenience methods for testing exception based code. It is built with 
+L<Test::Builder> and plays happily with L<Test::More> and friends.
 
 If you are not already familiar with L<Test::More> now would be the time to go take a look.
 
-You can specify the test plan when you C<use Test::Exception> in the same way as C<use Test::More>. See L<Test::More> for details.
+You can specify the test plan when you C<use Test::Exception> in the same way as C<use Test::More>.
+See L<Test::More> for details.
+
+NOTE: Test::Exception only checks for exceptions. It will ignore other methods of stopping 
+program execution - including exit(). If you have an exit() in evalled code Test::Exception
+will not catch this with any of its testing functions.
 
 =cut
 
@@ -318,9 +324,13 @@ Note that we load Test::Exception in a C<BEGIN> block ensuring that the subrouti
 
 =head1 BUGS
 
-None known at the time of writing. 
+There are some edge cases in Perl's exception handling where Test::Exception will miss exceptions
+thrown in DESTROY blocks. See the RT bug L<http://rt.cpan.org/Ticket/Display.html?id=24678> for
+details, along with the t/edge-cases.t in the distribution test suite. These will be addressed in
+a future Test::Exception release.
 
-If you find any please let me know by e-mail, or report the problem with L<http://rt.cpan.org/>.
+If you find any more bugs please let me know by e-mail, or report the problem with 
+L<http://rt.cpan.org/>.
 
 
 =head1 COMMUNITY
@@ -363,6 +373,7 @@ Andy Lester,
 Aristotle Pagaltzis, 
 Ben Prew, 
 Cees Hek,
+Chris Dolan,
 chromatic, 
 Curt Sampson,
 David Cantrell,
