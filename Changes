@@ -11,6 +11,7 @@ Revision history for Perl extension Test::Exception:
         & Chris Dolan)
     -   Added comment in docs about T::E not catching exit() in eval() blocks 
         (thanks Peter Scott)
+	-	Updated Test::* & Sub::Uplevel version dependencies to something modern
 
 0.25
     -   Updated Test::Simple dependency to make sure it is in sync with
