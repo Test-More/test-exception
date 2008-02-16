@@ -1,5 +1,9 @@
 Revision history for Perl extension Test::Exception:
 
+0.27
+    -   Patch to fix my broken code with the now working Sub::Uplevel. Many
+        thanks to David Golden
+
 0.26
     -   Added some more exposition on the usage of dies_ok() and lives_ok() for 
         those who found them confusing. Also reordered presentation of docs so

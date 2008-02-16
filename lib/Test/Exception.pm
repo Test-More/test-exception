@@ -7,7 +7,7 @@ use Sub::Uplevel qw( uplevel );
 use base qw( Exporter );
 use Carp;
 
-our $VERSION = '0.26';
+our $VERSION = '0.27';
 our @EXPORT = qw(dies_ok lives_ok throws_ok lives_and);
 
 my $Tester = Test::Builder->new;
@@ -83,9 +83,24 @@ will not catch this with any of its testing functions.
 
 =cut
 
+sub _quiet_caller (;$) { ## no critic Prototypes
+    my $height = $_[0];
+    $height++;
+    if( wantarray and !@_ ) {
+        return (CORE::caller($height))[0..2];
+    }
+    else {
+        return CORE::caller($height);
+    }
+}
 
 sub _try_as_caller {
     my $coderef = shift;
+
+    # local works here because Sub::Uplevel has already overridden caller
+    local *CORE::GLOBAL::caller;
+    { no warnings 'redefine'; *CORE::GLOBAL::caller = \&_quiet_caller; }
+
     eval { uplevel 3, $coderef };
     return $@;
 };
