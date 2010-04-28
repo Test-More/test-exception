@@ -10,3 +10,6 @@ Makefile$
 ^cover_db
 ^_build
 ^Build$
+^MYMETA.yml$
+.git
+.gitignore
