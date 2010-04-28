@@ -1,8 +1,11 @@
 Revision history for Perl extension Test::Exception:
 
-0.28
-    -   Minimum perl expressed as '5.006001' rather than '5.6.1' so old perls 
-        actually understand it.
+0.29
+    -   Same as 0.28_01 - Many thanks to Ricardo Signes for doing all the work
+        getting this release out
+
+0.28_01
+    -   Patch to fix code with Sub::Uplevel again.  Many thanks to David Golden
 
 0.27
     -   Patch to fix my broken code with the now working Sub::Uplevel. Many
@@ -19,7 +22,7 @@ Revision history for Perl extension Test::Exception:
         & Chris Dolan)
     -   Added comment in docs about T::E not catching exit() in eval() blocks 
         (thanks Peter Scott)
-	-	Updated Test::* & Sub::Uplevel version dependencies to something modern
+    -   Updated Test::* & Sub::Uplevel version dependencies to something modern
 
 0.25
     -   Updated Test::Simple dependency to make sure it is in sync with

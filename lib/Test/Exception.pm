@@ -5,9 +5,8 @@ package Test::Exception;
 use Test::Builder;
 use Sub::Uplevel qw( uplevel );
 use base qw( Exporter );
-use Carp;
 
-our $VERSION = '0.28';
+our $VERSION = '0.29';
 our @EXPORT = qw(dies_ok lives_ok throws_ok lives_and);
 
 my $Tester = Test::Builder->new;
@@ -171,8 +170,10 @@ A description of the exception being checked is used if no optional test descrip
 
 sub throws_ok (&$;$) {
     my ( $coderef, $expecting, $description ) = @_;
-    croak "throws_ok: must pass exception class/object or regex" 
-        unless defined $expecting;
+    unless (defined $expecting) {
+      require Carp;
+      Carp::croak( "throws_ok: must pass exception class/object or regex" ); 
+    }
     $description = _exception_as_string( "threw", $expecting )
     	unless defined $description;
     my $exception = _try_as_caller( $coderef );
@@ -405,6 +406,7 @@ Nadim Khemir,
 Paul McCann,
 Perrin Harkins, 
 Peter Scott, 
+Ricardo Signes,
 Rob Muhlestein 
 Scott R. Godin,
 Steve Purkis,

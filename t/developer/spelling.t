@@ -45,3 +45,5 @@ Nadim
 Pagaltzis
 Dolan
 RT
+Ricardo
+Signes
