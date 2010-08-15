@@ -85,11 +85,24 @@ will not catch this with any of its testing functions.
 sub _quiet_caller (;$) { ## no critic Prototypes
     my $height = $_[0];
     $height++;
-    if( wantarray and !@_ ) {
-        return (CORE::caller($height))[0..2];
+
+    if ( CORE::caller() eq 'DB' ) {
+        # passthrough the @DB::args trick
+        package DB;
+        if( wantarray and !@_ ) {
+            return (CORE::caller($height))[0..2];
+        }
+        else {
+            return CORE::caller($height);
+        }
     }
     else {
-        return CORE::caller($height);
+        if( wantarray and !@_ ) {
+            return (CORE::caller($height))[0..2];
+        }
+        else {
+            return CORE::caller($height);
+        }
     }
 }
 
