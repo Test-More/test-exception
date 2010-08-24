@@ -89,12 +89,32 @@ sub _quiet_caller (;$) { ## no critic Prototypes
     if ( CORE::caller() eq 'DB' ) {
         # passthrough the @DB::args trick
         package DB;
-        if( wantarray and !@_ ) {
-            return (CORE::caller($height))[0..2];
+        if( wantarray ) {
+            if ( !@_ ) {
+                return (CORE::caller($height))[0..2];
+            }
+            else {
+                # If we got here, we are within a Test::Exception test, and
+                # something is producing a stacktrace. In case this is a full
+                # trace (i.e. confess() ), we have to make sure that the sub
+                # args are not visible. If we do not do this, and the test in
+                # question is throws_ok() with a regex, it will end up matching
+                # against itself in the args to throws_ok().
+                #
+                # While it is possible (and maybe wise), to test if we are
+                # indeed running under throws_ok (by crawling the stack right
+                # up from here), the old behavior of Test::Exception was to
+                # simply obliterate @DB::args altogether in _quiet_caller, so
+                # we are just preserving the behavior to avoid surprises
+                #
+                my @frame_info = CORE::caller($height);
+                @DB::args = ();
+                return @frame_info;
+            }
         }
-        else {
-            return CORE::caller($height);
-        }
+
+        # fallback if nothing above returns
+        return CORE::caller($height);
     }
     else {
         if( wantarray and !@_ ) {
