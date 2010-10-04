@@ -432,6 +432,7 @@ chromatic,
 Curt Sampson,
 David Cantrell,
 David Golden, 
+David Tulloh,
 David Wheeler, 
 Janek Schleicher,
 Jim Keenan, 
@@ -446,13 +447,12 @@ Perrin Harkins,
 Peter Rabbitson,
 Peter Scott, 
 Ricardo Signes,
-Rob Muhlestein 
+Rob Muhlestein,
 Scott R. Godin,
 Steve Purkis,
 Steve, 
 Tim Bunce,
 and various anonymous folk for comments, suggestions, bug reports and patches.
-
 
 =head1 AUTHOR
 
