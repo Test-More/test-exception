@@ -1,7 +1,9 @@
 Revision history for Perl extension Test::Exception:
 
-0.30
+0.30_1 [2010-10-04] Or the "Peter Rabbitson did all the work" release
     -   Added dates to changes file, as far as we can from backpan et al
+    -   Fix for DB::args bug (thanks Peter Rabbitson)
+    -   Fix for bizarre-copy bug (thanks Peter Rabbitson)
 
 0.29  [2010-01-11]
     -   Same as 0.28_01 - Many thanks to Ricardo Signes for doing all the work
