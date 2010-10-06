@@ -108,6 +108,11 @@ DESCRIPTION
         A description of the exception being checked is used if no optional
         test description is passed.
 
+        NOTE: Rememeber when you "die $string_without_a_trailing_newline"
+        perl will automatically add the current script line number, input
+        line number and a newline. This will form part of the string that
+        throws_ok regular expressions match against.
+
     dies_ok
         Checks that a piece of code dies, rather than returning normally.
         For example:
@@ -260,11 +265,12 @@ ACKNOWLEDGMENTS
 
     Thanks to Adam Kennedy, Andy Lester, Aristotle Pagaltzis, Ben Prew, Cees
     Hek, Chris Dolan, chromatic, Curt Sampson, David Cantrell, David Golden,
-    David Wheeler, Janek Schleicher, Jim Keenan, Jos I. Boumans, Joshua ben
-    Jore, Jost Krieger, Mark Fowler, Michael G Schwern, Nadim Khemir, Paul
-    McCann, Perrin Harkins, Peter Scott, Ricardo Signes, Rob Muhlestein
-    Scott R. Godin, Steve Purkis, Steve, Tim Bunce, and various anonymous
-    folk for comments, suggestions, bug reports and patches.
+    David Tulloh, David Wheeler, J. K. O'Brien, Janek Schleicher, Jim
+    Keenan, Jos I. Boumans, Joshua ben Jore, Jost Krieger, Mark Fowler,
+    Michael G Schwern, Nadim Khemir, Paul McCann, Perrin Harkins, Peter
+    Rabbitson, Peter Scott, Ricardo Signes, Rob Muhlestein, Scott R. Godin,
+    Steve Purkis, Steve, Tim Bunce, and various anonymous folk for comments,
+    suggestions, bug reports and patches.
 
 AUTHOR
     Adrian Howard <adrianh@quietstars.com>
