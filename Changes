@@ -1,16 +1,10 @@
 Revision history for Perl extension Test::Exception:
 
-TODO
-- set up the repo & bugtracking fields to point to github
-- mention the repo in the docs
-- Fix RT #61145
-- Fix RT #52542
-- Fix RT #24678
-
-0.30_2 []
+0.30_2 [2010-10-06] Or the "oh what a to do" release
     -   Added a bunch of folk to the acknowledgements
     -   Added some clarifying documentation to respond to RT#59293
-    
+    -   Marked a test that was failing under T::B 2.0 until we figure out
+        whether it should pass or not. See http://is.gd/fNOFb    
 
 0.30_1 [2010-10-04] Or the "Peter Rabbitson did all the work" release
     -   Added dates to changes file, as far as we can from backpan et al

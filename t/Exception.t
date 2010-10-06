@@ -156,4 +156,7 @@ test_test("throws_ok: throws_ok overload without fallback");
 
 test_out("ok 1 - ");
 throws_ok { normal_die() } '/normal/', '';
-test_test("throws_ok: can pass empty test description");
+{
+    local $TODO = "See http://github.com/schwern/test-more/issues/issue/84";
+    test_test("throws_ok: can pass empty test description");
+}

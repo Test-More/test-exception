@@ -13,3 +13,4 @@ Makefile$
 ^MYMETA.yml$
 .git
 .gitignore
+todo.txt
