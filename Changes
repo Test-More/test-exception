@@ -1,5 +1,7 @@
 Revision history for Perl extension Test::Exception:
 
+0.32    []
+
 0.31   [2010-10-10] Or the "Yay - an actual release!" release
     -   Same as 0.30_2
 
@@ -19,7 +21,7 @@ Revision history for Perl extension Test::Exception:
         getting this release out
 
 0.28_01 
-    -   Patch to fix code with Sub::Uplevel again.  Many thanks to David Golden
+    -   Patch to fix code with Sub::Uplevel again. Many thanks to David Golden
 
 0.27  [2008-02-16]
     -   Patch to fix my broken code with the now working Sub::Uplevel. Many
