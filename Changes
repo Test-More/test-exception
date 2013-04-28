@@ -1,6 +1,7 @@
 Revision history for Perl extension Test::Exception:
 
-0.32    []
+0.32   [2013-04-28] Or the "prepping for upcoming Test::Simple 0.99" release
+    -   Fixed tests that broke due to Test::More diagnostic changes
 
 0.31   [2010-10-10] Or the "Yay - an actual release!" release
     -   Same as 0.30_2

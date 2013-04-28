@@ -7,3 +7,6 @@ MYMETA.yml
 Test-Exception-*.tar.gz
 _build/
 .DS_Store
+META.json
+MYMETA.json
+README
