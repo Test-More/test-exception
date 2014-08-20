@@ -1,7 +1,6 @@
 blib/
 Build
 Makefile.PL
-MANIFEST
 META.yml
 MYMETA.yml
 Test-Exception-*.tar.gz
