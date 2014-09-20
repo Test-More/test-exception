@@ -6,7 +6,7 @@ use Test::Builder;
 use Sub::Uplevel qw( uplevel );
 use base qw( Exporter );
 
-our $VERSION = '0.34';
+our $VERSION = '0.35';
 our @EXPORT = qw(dies_ok lives_ok throws_ok lives_and);
 
 my $Tester = Test::Builder->new;
@@ -333,18 +333,21 @@ The test description is optional, but recommended.
 =cut
 
 my $is_stream = eval { require Test::Stream; require Test::Stream::Event::Ok; 1 };
+our $LIVES_AND_NAME;
+if ($is_stream) {
+    Test::Stream->shared->munge(sub {
+        return unless defined $LIVES_AND_NAME;
+        my ($stream, $e) = @_;
+        return unless $e->isa('Test::Stream::Event::Ok');
+        return if defined $e->name;
+        $e->set_name($LIVES_AND_NAME);
+    });
+}
 
 sub lives_and (&;$) {
     my ( $test, $description ) = @_;
     if ($is_stream) {
-        my $init = Test::Stream::Event::Ok->can('init');
-        no strict 'refs';
-        no warnings 'redefine';
-        local *Test::Stream::Event::Ok::init = sub {
-            $_[0]->[Test::Stream::Event::Ok::NAME()] = $description
-                unless defined $_[0]->[Test::Stream::Event::Ok::NAME()];
-            goto &$init;
-        };
+        local $LIVES_AND_NAME = $description;
         eval { $test->() } and return 1;
     }
     else {
