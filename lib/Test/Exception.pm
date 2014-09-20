@@ -6,7 +6,7 @@ use Test::Builder;
 use Sub::Uplevel qw( uplevel );
 use base qw( Exporter );
 
-our $VERSION = '0.33';
+our $VERSION = '0.34';
 our @EXPORT = qw(dies_ok lives_ok throws_ok lives_and);
 
 my $Tester = Test::Builder->new;
@@ -341,8 +341,8 @@ sub lives_and (&;$) {
         no strict 'refs';
         no warnings 'redefine';
         local *Test::Stream::Event::Ok::init = sub {
-            $_[0]->[Test::Stream::Event::Ok::NAME] = $description
-                unless defined $_[0]->[Test::Stream::Event::Ok::NAME];
+            $_[0]->[Test::Stream::Event::Ok::NAME()] = $description
+                unless defined $_[0]->[Test::Stream::Event::Ok::NAME()];
             goto &$init;
         };
         eval { $test->() } and return 1;

@@ -1,5 +1,8 @@
 Revision history for Perl extension Test::Exception:
 
+0.33   [2014-09-20]
+    -   Fix a bug when Test::Builder isn't new.
+
 0.33   [2014-09-19] Or "Another Test-Simple change"
     -   Fixed test broken by changes in Test::Builder and friends
 
