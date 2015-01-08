@@ -1,9 +1,12 @@
 Revision history for Perl extension Test::Exception:
 
-0.34   [2014-09-20]
+0.36   [2015-01-08]
+    -   Fix bug when Test::More has been downgraded
+
+0.35   [2014-09-20]
     -   Fix a bug when Test::Builder isn't new (better version).
 
-0.33   [2014-09-20]
+0.34   [2014-09-20]
     -   Fix a bug when Test::Builder isn't new.
 
 0.33   [2014-09-19] Or "Another Test-Simple change"
