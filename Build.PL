@@ -14,6 +14,11 @@ my $build = Module::Build->new(
     },
     create_makefile_pl => 'traditional',
     create_readme => 1,
+    meta_merge => {
+        resources => {
+            repository => 'https://github.com/adrianh/test-exception'
+        }
+    },
 );
 $build->create_build_script;
 

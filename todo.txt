@@ -1,5 +1,5 @@
 TODO
-- set up the repo & bugtracking fields to point to github
+- set up the bugtracking fields to point to github
 - mention the repo in the docs
 - Fix RT #61145
 - Fix RT #52542
