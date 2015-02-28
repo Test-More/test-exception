@@ -1,5 +1,6 @@
 Revision history for Perl extension Test::Exception:
 
+0.38   [2015-02-27]
     -   fixed repository link in metadata
 
 0.37   [2015-02-27]
