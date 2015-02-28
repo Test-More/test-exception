@@ -198,7 +198,7 @@ A true value is returned if the test succeeds, false otherwise. On exit $@ is gu
 
 A description of the exception being checked is used if no optional test description is passed.
 
-NOTE: Rememeber when you C<die $string_without_a_trailing_newline> perl will 
+NOTE: Remember when you C<die $string_without_a_trailing_newline> perl will 
 automatically add the current script line number, input line number and a newline. This will
 form part of the string that throws_ok regular expressions match against.
 
