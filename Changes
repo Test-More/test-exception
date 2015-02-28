@@ -1,5 +1,7 @@
 Revision history for Perl extension Test::Exception:
 
+    -   distribution is now managed by ExtUtils::MakeMaker (RT#102054)
+
 0.36   [2015-01-08]
     -   Fix bug when Test::More has been downgraded
 

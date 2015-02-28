@@ -1,6 +1,5 @@
 blib/
 Build
-Makefile.PL
 MANIFEST
 META.yml
 MYMETA.yml
