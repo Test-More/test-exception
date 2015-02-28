@@ -21,8 +21,7 @@ my %WriteMakefileArgs = (
         type => 'git',
       },
       bugtracker => {
-        mailto => 'bug-Test-Exception@rt.cpan.org',
-        web => 'https://rt.cpan.org/Public/Dist/Display.html?Name=Test-Exception',
+        web => 'https://github.com/Test-More/test-exception/issues',
       },
     },
     x_IRC => 'irc://irc.perl.org/#perl-qa',
