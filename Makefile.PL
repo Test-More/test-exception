@@ -16,8 +16,8 @@ my %WriteMakefileArgs = (
     resources => {
       homepage => 'https://github.com/Test-More/test-exception',
       repository => {
-        url => 'https://github.com/karenetheridge/Test-Exception.git',
-        web => 'https://github.com/karenetheridge/Test-Exception',
+        url => 'https://github.com/Test-More/test-exception.git',
+        web => 'https://github.com/Test-More/test-exception',
         type => 'git',
       },
       bugtracker => {

@@ -1,5 +1,7 @@
 Revision history for Perl extension Test::Exception:
 
+    -   fixed repository link in metadata
+
 0.37   [2015-02-27]
     -   distribution is now managed by ExtUtils::MakeMaker (RT#102054)
 
