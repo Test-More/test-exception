@@ -3,14 +3,9 @@
 use strict;
 use warnings;
 use Test::More;
+use Test::Spelling;
+use Pod::Wordlist;
 
-my $ispell_path = eval q{
-    use Test::Spelling; 
-    use File::Which;
-    which('ispell') || die 'no ispell'
-};
-plan skip_all => 'Optional Test::Spelling, File::Which and ispell program required to spellcheck POD' if $@;
-set_spell_cmd("$ispell_path -l");
 add_stopwords( <DATA> );
 all_pod_files_spelling_ok();
 
