@@ -38,10 +38,13 @@ my %WriteMakefileArgs = (
       },
       runtime => {
         requires => {
-          'Test::Simple'            => '0.7',
+          'Carp'                    => '0',
+          'Exporter'                => '0',
+          'base'                    => '0',
+          'strict'                  => '0',
+          'warnings'                => '0',
           'Test::Builder'           => '0.7',
           'Test::Builder::Tester'   => '1.07',
-          'Test::More'              => '0.7',
           'Test::Harness'           => '2.03',
           'Sub::Uplevel'            => '0.18',
           'perl'                    => '5.006001',
@@ -49,6 +52,8 @@ my %WriteMakefileArgs = (
       },
       test => {
         requires => {
+          'Test::More'              => '0.7',
+          'overload'                => '0',
         },
       },
     },
