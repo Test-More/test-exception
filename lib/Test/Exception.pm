@@ -23,7 +23,7 @@ sub import {
 
 =head1 NAME
 
-Test::Exception - Test exception based code
+Test::Exception - Test exception-based code
 
 =head1 SYNOPSIS
 
