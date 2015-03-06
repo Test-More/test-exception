@@ -486,6 +486,10 @@ If you can spare the time, please drop me a line if you find this module useful.
 
 Delicious links on Test::Exception.
 
+=item L<Test::Fatal>
+
+A slightly different interface to testing exceptions, without overriding C<CORE::caller>.
+
 =item L<Test::Warnings> & L<Test::Warn> & L<Test::NoWarnings>
 
 Modules to help test warnings.
