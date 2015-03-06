@@ -26,6 +26,7 @@ my %WriteMakefileArgs = (
     },
     x_IRC => 'irc://irc.perl.org/#perl-qa',
     x_MailingList => 'http://lists.perl.org/list/perl-qa.html',
+    x_authority => 'cpan:ADIE',
   },
 
   META_ADD => {
