@@ -80,6 +80,11 @@ NOTE: Test::Exception only checks for exceptions. It will ignore other methods o
 program execution - including exit(). If you have an exit() in evalled code Test::Exception
 will not catch this with any of its testing functions.
 
+NOTE: This module uses L<Sub::Uplevel> and relies on overriding
+C<CORE::GLOBAL::caller> to hide your test blocks from the call stack.  If this
+use of global overrides concerns you, the L<Test::Fatal> module offers a more
+minimalist alternative.
+
 =cut
 
 sub _quiet_caller (;$) { ## no critic Prototypes
