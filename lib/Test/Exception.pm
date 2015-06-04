@@ -340,7 +340,7 @@ The test description is optional, but recommended.
 my $is_stream = $INC{'Test/Stream.pm'};
 our $LIVES_AND_NAME;
 if ($is_stream) {
-    Test::Stream->shared->munge(sub {
+    Test::Stream::Sync->stack->top->munge(sub {
         return unless defined $LIVES_AND_NAME;
         my ($stream, $e) = @_;
         return unless $e->isa('Test::Stream::Event::Ok');
