@@ -1,5 +1,8 @@
 Revision history for Perl extension Test::Exception:
 
+0.39   [2015-06-04]
+    -   Updated for changes in Test::Stream
+
 0.38   [2015-02-27]
     -   fixed repository link in metadata
 
