@@ -6,7 +6,7 @@ use Test::Builder;
 use Sub::Uplevel qw( uplevel );
 use base qw( Exporter );
 
-our $VERSION = '0.39';
+our $VERSION = '0.40';
 our @EXPORT = qw(dies_ok lives_ok throws_ok lives_and);
 
 my $Tester = Test::Builder->new;
@@ -337,7 +337,7 @@ The test description is optional, but recommended.
 
 =cut
 
-my $is_stream = $INC{'Test/Stream.pm'};
+my $is_stream = $INC{'Test/Stream/Sync.pm'};
 our $LIVES_AND_NAME;
 if ($is_stream) {
     Test::Stream::Sync->stack->top->munge(sub {
