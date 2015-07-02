@@ -1,5 +1,3 @@
-#! /usr/bin/perl
-
 use strict;
 use warnings;
 use Test::More skip_all => 'stuff relating to RT#24678 that I have not fixed yet';
