@@ -6,7 +6,7 @@ use Test::Builder;
 use Sub::Uplevel qw( uplevel );
 use base qw( Exporter );
 
-our $VERSION = '0.40';
+our $VERSION = '0.41';
 our @EXPORT = qw(dies_ok lives_ok throws_ok lives_and);
 
 my $Tester = Test::Builder->new;
@@ -337,9 +337,20 @@ The test description is optional, but recommended.
 
 =cut
 
+my $is_test2 = $INC{'Test2/Global.pm'} || $INC{'Test2/API.pm'} || $INC{'Test2/Context.pm'};
 my $is_stream = $INC{'Test/Stream/Sync.pm'};
 our $LIVES_AND_NAME;
-if ($is_stream) {
+if ($is_test2) {
+    Test2::Global::test2_stack()->top->filter(sub {
+        my ($hub, $e) = @_;
+        return $e unless defined $LIVES_AND_NAME;
+        return $e unless $e->isa('Test2::Event::Ok');
+        return $e if defined $e->name;
+        $e->set_name($LIVES_AND_NAME);
+        return $e;
+    });
+}
+elsif ($is_stream) {
     Test::Stream::Sync->stack->top->munge(sub {
         return unless defined $LIVES_AND_NAME;
         my ($stream, $e) = @_;
@@ -351,7 +362,7 @@ if ($is_stream) {
 
 sub lives_and (&;$) {
     my ( $test, $description ) = @_;
-    if ($is_stream) {
+    if ($is_test2 || $is_stream) {
         local $LIVES_AND_NAME = $description;
         eval { $test->() } and return 1;
     }

@@ -1,5 +1,8 @@
 Revision history for Perl extension Test::Exception:
 
+0.40   [2015-12-21]
+    -   Updated for Test2
+
 0.40   [2015-06-05]
     -   Updated for changes in Test::Stream (Use Test::Stream::Sync)
 
