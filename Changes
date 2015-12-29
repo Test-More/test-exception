@@ -1,5 +1,9 @@
 Revision history for Perl extension Test::Exception:
 
+0.43   [2015-12-28]
+
+    -   No Changes from developer build 0.42_1
+
 0.42_1 [2015-12-28]
 
     -   Remove Test2/Test-Stream special cases, they are not needed
