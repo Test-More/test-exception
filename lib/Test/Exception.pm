@@ -406,10 +406,6 @@ If you are interested in testing using Perl I recommend you visit L<http://qa.pe
 
 You can find users of Test::Exception, including the module author, on  L<http://www.perlmonks.org/>. Feel free to ask questions on Test::Exception there.
 
-=item CPAN::Forum
-
-The CPAN Forum is a web forum for discussing Perl's CPAN modules.   The Test::Exception forum can be found at L<http://www.cpanforum.com/dist/Test-Exception>.
-
 =item AnnoCPAN
 
 AnnoCPAN is a web site that allows community annotations of Perl module documentation. The Test::Exception annotations can be found at L<http://annocpan.org/~ADIE/Test-Exception/>.
