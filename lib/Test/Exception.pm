@@ -223,11 +223,16 @@ sub throws_ok (&$;$) {
         unless defined $description;
     my $exception = _try_as_caller( $coderef );
     my $regex = $Tester->maybe_regex( $expecting );
-    my $ok = $regex 
-        ? ( $exception =~ m/$regex/ ) 
-        : eval { 
-            $exception->isa( ref $expecting ? ref $expecting : $expecting ) 
-        };
+    my $ok;
+    if ($exception) {
+      $ok = $regex 
+          ? ( $exception =~ m/$regex/ ) 
+          : eval { 
+              $exception->isa( ref $expecting ? ref $expecting : $expecting ) 
+          };
+    } else {
+      $ok = 0;
+    }
     $Tester->ok( $ok, $description );
     unless ( $ok ) {
         $Tester->diag( _exception_as_string( "expecting:", $expecting ) );
