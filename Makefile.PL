@@ -53,6 +53,7 @@ my %WriteMakefileArgs = (
       test => {
         requires => {
           'Test::More'              => '0.7',
+          'Test::Deep'              => '0',
           'overload'                => '0',
         },
       },
