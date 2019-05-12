@@ -4,6 +4,7 @@ use warnings;
 package Test::Exception;
 use Test::Builder;
 use Sub::Uplevel qw( uplevel );
+use Scalar::Util;
 use base qw( Exporter );
 
 our $VERSION = '0.43';
@@ -170,6 +171,7 @@ Tests to see that a specific exception is thrown. throws_ok() has two forms:
 
   throws_ok BLOCK REGEX, TEST_DESCRIPTION
   throws_ok BLOCK CLASS, TEST_DESCRIPTION
+  throws_ok BLOCK TEST_DEEP_EXPECTATION, TEST_DESCRIPTION
 
 In the first form the test passes if the stringified exception matches the give regular expression. For example:
 
@@ -189,6 +191,21 @@ You can get the same effect by passing an instance of the exception you want to 
 
     my $SIMPLE = Error::Simple->new;
     throws_ok { $foo->bar } $SIMPLE, 'simple error';
+
+The third form allows usage of L<Test::Deep> to write more complex tests.
+L<Test::Deep> itself is not imported by L<Test::Exception>.
+
+    throws_ok
+        { code that should throw exception }
+        all (
+            obj_isa ('Expected::Exception::Instance'),
+            methods (
+                errcode => 400,
+                errstr  => re (qr/foo/),
+            )
+        ),
+        'description',
+        ;
 
 Should a throws_ok() test fail it produces appropriate diagnostic messages. For example:
 
@@ -213,6 +230,12 @@ form part of the string that throws_ok regular expressions match against.
 =cut
 
 
+sub is_test_deep_cmp {
+    my ( $expecting ) = @_;
+
+    return Scalar::Util::blessed( $expecting ) && $expecting->isa( 'Test::Deep::Cmp' );
+}
+
 sub throws_ok (&$;$) {
     my ( $coderef, $expecting, $description ) = @_;
     unless (defined $expecting) {
@@ -222,16 +245,28 @@ sub throws_ok (&$;$) {
     $description = _exception_as_string( "threw", $expecting )
         unless defined $description;
     my $exception = _try_as_caller( $coderef );
-    my $regex = $Tester->maybe_regex( $expecting );
-    my $ok = $regex 
-        ? ( $exception =~ m/$regex/ ) 
-        : eval { 
-            $exception->isa( ref $expecting ? ref $expecting : $expecting ) 
-        };
+    my ( $ok, $stack );
+    my $is_test_deep_cmp = is_test_deep_cmp( $expecting );
+
+    if ( $is_test_deep_cmp ) {
+        ( $ok, $stack ) = Test::Deep::cmp_details( $exception, $expecting );
+    } else {
+        my $regex = $Tester->maybe_regex( $expecting );
+        $ok = $regex
+            ? ( $exception =~ m/$regex/ )
+            : eval {
+                $exception->isa( ref $expecting ? ref $expecting : $expecting )
+            };
+    }
+
     $Tester->ok( $ok, $description );
     unless ( $ok ) {
-        $Tester->diag( _exception_as_string( "expecting:", $expecting ) );
-        $Tester->diag( _exception_as_string( "found:", $exception ) );
+        if ( $is_test_deep_cmp ) {
+            $Tester->diag( Test::Deep::deep_diag( $stack ) );
+        } else {
+            $Tester->diag( _exception_as_string( "expecting:", $expecting ) );
+            $Tester->diag( _exception_as_string( "found:", $exception ) );
+        }
     };
     $@ = $exception;
     return $ok;
